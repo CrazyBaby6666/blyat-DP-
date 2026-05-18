@@ -12,6 +12,7 @@ public class LandingPad : LandingZone
     public override Land(Helicopter vehicle)
     {
         base.Land(vehicle);
+        _currentVehicle = vehicle;
     }
 
     public override TakeOff(Helicopter vehicle)

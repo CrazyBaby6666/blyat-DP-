@@ -14,6 +14,7 @@ public class Runway : LandingZone
     public override Land(Airplane vehicle)
     {
         base.Land(vehicle);
+        _currentVehicle = vehicle;
     }
 
     public override TakeOff(Airplane vehicle)
