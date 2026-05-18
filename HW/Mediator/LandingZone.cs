@@ -2,6 +2,7 @@
 
 public abstract class LandingZone
 {
+    protected string _id;
     protected IMediator _mediator;
     protected bool _isTaken;
     
@@ -10,13 +11,15 @@ public abstract class LandingZone
         _mediator = mediator;
     }
 
-    public virtual void Land()
+    public virtual void Land(AirVehicle vehicle)
     {
+        vehicle.Land();
         _isTaken = true;
     }
     
-    public virtual void TakeOff()
+    public virtual void TakeOff(AirVehicle vehicle)
     {
+        vehicle.TakeOff();
         _isTaken = false;
     }
 }
