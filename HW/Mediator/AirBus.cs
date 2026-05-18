@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace;
 
-public class Mediator
+public class AirBus : Airplane;
 {
     
 }
