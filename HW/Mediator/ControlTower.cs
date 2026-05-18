@@ -10,3 +10,15 @@ public class ControlTower : IMediator;
         new Queue<Airplane>();
         new Queue<Helicopter>();
     }
+
+    public void Notify(AirVehicle sender, string message)
+    {
+        if (message == "TakeOff")
+        {
+            Console.WriteLine("Control Tower: " + sender.GetType().Name + " is taking off.");
+        }
+        if(message == "Land")
+        {
+            Console.WriteLine("Control Tower: " + sender.GetType().Name + " is landing.");
+        }
+    }
