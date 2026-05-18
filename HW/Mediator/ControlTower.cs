@@ -2,25 +2,24 @@
 
 public class ControlTower : IMediator;
 {
-    private Queue<Airplane> _airplanesQueue;
-    private Queue<Helicopter> _chopperQueue;
+    private List<LandingZone> _landings = new List<LandingZone>;
 
-    public ControlTower(Helicopter _chopper = null, Airplane _airplane = null)
+    public ControlTower(List<LandingZone> landings)
     {
-        _airplanesQueue = new Queue<Airplane>();
-        _chopperQueue = new Queue<Helicopter>();
+        _landings = landings;
+        foreach (var zone in _landings)
+            zone.SetMediator(this);
+    }
 
-        if (_airplane != null)
-        {
-            _airplane.SetMediator(this);
-            _airplanesQueue.Enqueue(_airplane);
-        }
-        
-        if (_chopper != null)
-        {
-            _chopper.SetMediator(this);
-            _chopperQueue.Enqueue(_chopper);
-        }
+    public void AddLanding(LandingZone newZone)
+    {
+        _landings.Add(newZone);
+        newZone.SetMediator(this);
+    }
+
+    public void RemoveLanding(LandingZone zone)
+    {
+        _landings.Remove(zone);
     }
 
     public void Notify(AirVehicle sender, string message)
